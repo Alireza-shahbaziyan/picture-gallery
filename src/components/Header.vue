@@ -25,7 +25,7 @@ export default {
 </script>
 <style scoped>
 header {
-    border-radius: 0 0 85% 85% / 30%;
+    /* border-radius: 0 0 85% 85% / 30%; */
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/67/Hafezieh_pillar_detail.jpg');
 }
 </style>
