@@ -1,14 +1,15 @@
 import axios from "axios";
 
-const api = axios.create({
+const apiClient = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
+        'Content-Type':'application/json'
     }
 })
-export default{
-    getDetailsMovie(){
-        return api.get('/photos')
+export default {
+        getDetailsImage(){
+            return apiClient.get('/photos')
+        }
     }
-}

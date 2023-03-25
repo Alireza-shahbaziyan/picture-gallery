@@ -1,12 +1,12 @@
 <template>
   <div>
-    {{ events }}
+    {{ events.data }}
   </div>
 </template>
 <script>
 import { mapState } from 'pinia'
 import { useCounterStore } from '../stores/counter'
-import getDetailsMovie from '@/Service/Service.js'
+// import axios from 'axios'
 
 export default {
   data() {
@@ -17,8 +17,5 @@ export default {
   computed: {
     ...mapState(useCounterStore, ['count'])
   },
-  created() {
-    getDetailsMovie.api().then(res => this.events = res).catch(e => console.log(e))
-  }
 }
 </script>
