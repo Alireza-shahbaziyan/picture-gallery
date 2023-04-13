@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ events.data }}
+    {{count.Photos}}
   </div>
 </template>
 <script>
