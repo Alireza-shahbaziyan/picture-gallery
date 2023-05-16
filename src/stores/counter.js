@@ -1,18 +1,42 @@
+import axios from 'axios'
+import { error } from 'daisyui/src/colors'
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('counter', {
+export const usePhotoStore = defineStore('counter', {
   state: () => ({
-    Photos: "photos",
+    test: 0,
+    users: {}
   }),
   actions: {
-    addTodo(value) {
-      this.Photos.push(value)
+    add() {
+      this.test++
     },
-    deleteTodo(value) {
-      this.Photos.splice(value, 1)
+    async getUsers() {
+      const users = await axios.get('https://jsonplaceholder.typicode.com/users').then(res => {
+        console.log('data :=>',res.data);
+        this.users = res.data[0]
+      }).catch(rej=>console.log("erorr",rej))
     }
-  },
-  getters: {
 
   }
 })
+
+// state: () => ({
+//   Photos: "photos",
+//   loding: false,
+//   error: null
+// }),
+// actions: {
+//   async fetchPhotos() {
+//     this.loading = true
+//       try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/photos')
+//         const photos = await response.json()
+//         this.photos = photos
+//       } catch (error) {
+//         this.error = error.message
+//         console.log("error");
+//       }
+//       this.loding=false
+//   }
+// }
