@@ -5,16 +5,17 @@ import { defineStore } from 'pinia'
 export const usePhotoStore = defineStore('counter', {
   state: () => ({
     test: 0,
-    users: {}
+    users: {},
+    loading:false
   }),
   actions: {
     add() {
       this.test++
     },
     async getUsers() {
-      const users = await axios.get('https://jsonplaceholder.typicode.com/users').then(res => {
-        console.log('data :=>',res.data);
-        this.users = res.data[0]
+      await axios.get('https://jsonplaceholder.typicode.com/photos').then(res => {
+        this.users = res.data
+        this.loading = true
       }).catch(rej=>console.log("erorr",rej))
     }
 
